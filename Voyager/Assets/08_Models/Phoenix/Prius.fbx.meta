@@ -15,7 +15,42 @@ ModelImporter:
   - first:
       74: -5524682241680344792
     second: Bird_Rig|Bird_Rig|Bird_Rig|RedBirdAnimation|Bird_Rig|RedBirdAnimation
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AroundEyes
+    second: {fileID: 2100000, guid: d4d5ea3e988ec6046b42bac2e1f7d046, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beak
+    second: {fileID: 2100000, guid: 49ca82e6f4267de44a6cccf302586835, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BellyDark
+    second: {fileID: 2100000, guid: b2558c224a3a4f640b27c83564cfa2a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BellyLight
+    second: {fileID: 2100000, guid: d69279c5311889946b3cb6cf2aadded1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkRed
+    second: {fileID: 2100000, guid: c860a3a382434f54dba2b5045841fe53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: 2e00758a45375ae46bac194843ccf463, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SemiRed
+    second: {fileID: 2100000, guid: 3b65646029df78b45b6e064e5ba562cb, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -93,7 +128,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.005
+    globalScale: 0.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
