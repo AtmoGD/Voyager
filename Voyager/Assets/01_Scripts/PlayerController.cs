@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
-
+using System;
 public class PlayerController : MonoBehaviour
 {
+    public Action<Vector3> OnMove;
     private NavMeshAgent agent = null;
     public Vector3 movement { get; set; }
 
@@ -16,14 +17,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (movement.magnitude > 0.0f)
-            Move();
+        Move();
     }
 
     public void TakeMovementInput(InputAction.CallbackContext context)
     {
         Vector3 input = context.ReadValue<Vector2>();
-        movement = new Vector3(input.x, 0, input.y).normalized;
+        movement = new Vector3(input.x, 0, input.y);
     }
 
     void Move()
@@ -37,8 +37,11 @@ public class PlayerController : MonoBehaviour
         right.Normalize();
 
         Vector3 movingDirection = forward * movement.z + right * movement.x;
-        Vector3 newPosition = transform.position + movingDirection.normalized;
+        Vector3 newPosition = transform.position + movingDirection;
 
-        agent.SetDestination(newPosition);
+        if (movement.magnitude > 0.0f)
+            agent.SetDestination(newPosition);
+
+        OnMove?.Invoke(movingDirection);
     }
 }
