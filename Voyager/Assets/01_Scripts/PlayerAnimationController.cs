@@ -22,6 +22,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     void SetMovementSpeed(Vector3 _movement)
     {
+
         anim.SetFloat("Speed", _movement.magnitude);
     }
 }

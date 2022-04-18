@@ -8,11 +8,16 @@ public class PlayerController : MonoBehaviour
 {
     public Action<Vector3> OnMove;
     private NavMeshAgent agent = null;
+    private Rigidbody rb = null;
     public Vector3 movement { get; set; }
+
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float threshold = 0.1f;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -37,11 +42,15 @@ public class PlayerController : MonoBehaviour
         right.Normalize();
 
         Vector3 movingDirection = forward * movement.z + right * movement.x;
-        Vector3 newPosition = transform.position + movingDirection;
 
-        if (movement.magnitude > 0.0f)
-            agent.SetDestination(newPosition);
-
-        OnMove?.Invoke(movingDirection);
+        if (movingDirection.magnitude > threshold)
+        {
+            agent.SetDestination(transform.position + movingDirection.normalized * speed);
+            OnMove?.Invoke(movingDirection);
+        }
+        else {
+            agent.SetDestination(transform.position);
+            OnMove?.Invoke(Vector3.zero);
+        }
     }
 }
