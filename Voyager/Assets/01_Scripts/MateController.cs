@@ -28,6 +28,7 @@ public class MateController : MonoBehaviour
     [SerializeField] private float velocityMax = 20f;
     [SerializeField] private float heightMin = 2f;
     [SerializeField] private float heightMax = 10f;
+    [SerializeField] private float changeAnimRandom = 0.1f;
 
     [SerializeField] private float heightRegulationSpeed = 5f;
 
@@ -59,7 +60,6 @@ public class MateController : MonoBehaviour
         anim = GetComponent<Animator>();
         // StartCoroutine(RandomOffsetCoroutine());
     }
-
     void FixedUpdate()
     {
         SineOffset();
@@ -75,6 +75,11 @@ public class MateController : MonoBehaviour
         }
 
         Follow();
+
+        if(Random.Range(0f, 1f) < changeAnimRandom)
+        {
+            anim.SetTrigger("Change");
+        }
     }
         // switch (state)
         // {
@@ -187,7 +192,7 @@ public class MateController : MonoBehaviour
         }
         // rb.MovePosition(transform.position + velocity * _speed * Time.deltaTime);
         // transform.position = Vector3.Slerp(transform.position, _destination, _speed * Time.deltaTime);
-        anim.SetFloat("Speed", velocity.magnitude);
+        // anim.SetFloat("Speed", velocity.magnitude);
     }
 
     void Idle()
